@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  app:
+    image: pedroluyo/criptosol:latest
+    container_name: criptosol_peru
+    ports:
+      - "4200:4200"
+    #environment:
+    #  MY_ENVIRONMENT: ${MY_ENVIRONMENT}
+    #volumes:
+    #  - /ruta/en/el/host:/ruta/en/el/contenedor

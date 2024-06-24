@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import AccountWeb3Model from '../../model/account.web3.model';
 import { Web3Service } from '../../core/web3';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trasferencia',
@@ -82,9 +83,18 @@ export class TrasferenciaComponent implements OnInit {
         value: value
       });
 
-      this.transactionMessage = `Transaction successful! Sent ${this.amount} ETH to ${this.recipientAddress}`;
+      this.transactionMessage = `Transacción completada! Enviado ${this.amount} ETH a ${this.recipientAddress}`;
       this.transactionSuccess = true;
       this.updateAccountInfo(); 
+
+      Swal.fire({
+        position: "center", 
+        icon: "success",
+        title: "Su Transacción se ha completado con exito!",
+        showConfirmButton: false,
+        timer: 5500
+      });
+      
     } catch (error: unknown) {
       if (error instanceof Error) {
         this.transactionMessage = 'Transaction failed: ' + error.message;

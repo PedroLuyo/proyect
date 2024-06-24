@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -24,7 +24,7 @@
     "docker": "^1.0.0",
     "ng-bootstrap": "^1.6.3",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.11.0",
+    "sweetalert2": "^11.12.0",
     "tslib": "^2.3.0",
     "web3": "^4.9.0",
     "zone.js": "~0.14.3"
