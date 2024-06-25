@@ -1,0 +1,47 @@
+microservices:
+  prs:
+    platos-carta: http://localhost:9095/api/v1/productos-carta
+    platos-menu: http://localhost:9999/comida
+
+
+
+
+server:
+  port: 8086
+
+spring:
+  application:
+    name: menuRestaurant
+
+  #data:
+  #  mongodb:
+  #    uri: mongodb+srv://admin:admin@prs.mels9tw.mongodb.net/
+  #    auto-index-creation: false
+
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@prs.mels9tw.mongodb.net/?retryWrites=true&w=majority&appName=PRS
+      database: menuRestaurant
+      auto-index-creation: false
+
+  kafka:
+    bootstrap-servers: pkc-12576z.us-west2.gcp.confluent.cloud:9092
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='MU6QBSWJCUQLDL6H' password='Gczgr/Q/ePlbRzRhZwvtxkD6zj5KXAKfouAsNI5aUQp5dAwluvwJMMB5PFaO7u4B';
+        mechanism: PLAIN
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: my-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+
+
+

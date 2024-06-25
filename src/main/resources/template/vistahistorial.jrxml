@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vistahistorial" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="811704fe-7d47-45dc-b2f6-a2102d95c675">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Historial"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT vista_menu_comida_historial.nombremenu,
+	vista_menu_comida_historial.nombrecomida,
+	vista_menu_comida_historial.precio,
+	vista_menu_comida_historial.categoria,
+	vista_menu_comida_historial.id,
+	comidas.menuid,
+	vista_menu_comida_historial.menuid
+FROM comidas
+	INNER JOIN menus ON 
+	 comidas.menuid = menus.menuid ,
+	vista_menu_comida_historial]]>
+	</queryString>
+	<field name="nombremenu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombremenu"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombremenu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<field name="nombrecomida" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombrecomida"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombrecomida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<field name="precio" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<field name="menuid" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="menuid"/>
+		<property name="com.jaspersoft.studio.field.label" value="menuid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="comidas"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="menuid"/>
+		<property name="com.jaspersoft.studio.field.label" value="menuid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vista_menu_comida_historial"/>
+	</field>
+	<group name="nombremenu">
+		<groupExpression><![CDATA[$F{nombremenu}]]></groupExpression>
+	</group>
+	<group name="nombrecomida">
+		<groupExpression><![CDATA[$F{nombrecomida}]]></groupExpression>
+	</group>
+	<group name="precio">
+		<groupExpression><![CDATA[$F{precio}]]></groupExpression>
+	</group>
+	<group name="categoria">
+		<groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+	</group>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="menuid">
+		<groupExpression><![CDATA[$F{menuid}]]></groupExpression>
+	</group>
+	<group name="COLUMN_7">
+		<groupExpression><![CDATA[$F{COLUMN_7}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="242" splitType="Stretch">
+			<staticText>
+				<reportElement x="250" y="40" width="459" height="58" forecolor="#B03A2E" backcolor="#FFFFFF" uuid="e70040ee-29db-4ef7-993b-31a137917fe0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE CARTA DEL RESTAURANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="90" width="400" height="50" uuid="d9a1fbcb-33d5-4afd-b0a7-ae76b6137854"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Sabores innovadores con un toque tecnológico."]]></text>
+			</staticText>
+			<image>
+				<reportElement x="100" y="100" width="120" height="110" uuid="cb1276b7-69b5-4f1a-bfc7-43df526c0f5c"/>
+				<imageExpression><![CDATA["C:/Users/ACER/Downloads/Black Red Vintage Classic Illustrated Bbq Logo (1).png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="650" y="7" width="50" height="20" forecolor="#1F1E1E" uuid="1600b24c-733d-43b0-8f69-931afc113118">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="55e7ff8e-7b07-4bc4-9c12-803ac1cca4e2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="700" y="7" width="80" height="20" uuid="64079293-4723-45b2-8dca-3de1ce68d573"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<line>
+				<reportElement x="70" y="38" width="610" height="3" forecolor="#B03A2E" uuid="832e21bf-02f2-4817-b19d-91175ce77731"/>
+			</line>
+			<staticText>
+				<reportElement x="90" y="8" width="60" height="30" forecolor="#B03A2E" uuid="d94a9001-555a-4ee8-af2b-9517d65a0491">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="064b4775-92de-4302-9568-ccb1a3c586dd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="9" width="100" height="30" forecolor="#B03A2E" uuid="2f25681d-5ef4-45dc-9acd-930b156e5f5e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f64f5c3-3a15-4b55-b322-d62471d6efce"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="9" width="100" height="30" forecolor="#B03A2E" uuid="d9213f9b-df30-4b55-a908-065afb2a9110">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da011df3-b25e-410e-b0c5-20b6868a5778"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="9" width="100" height="30" forecolor="#B03A2E" uuid="7e45a5c4-6af0-4a98-add7-b76d59f1842c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2979f70c-2180-40f9-a681-bf8b1d5d7f57"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="90" y="-1" width="60" height="30" forecolor="#1F1E1E" uuid="1fb34e1e-82d9-4fc9-ae9d-361dcbe0944d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="064b4775-92de-4302-9568-ccb1a3c586dd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="-1" width="100" height="30" forecolor="#1F1E1E" uuid="3c97ef19-8f78-4854-9a8c-7fdd94da2b62">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f64f5c3-3a15-4b55-b322-d62471d6efce"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombremenu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="-1" width="100" height="30" forecolor="#1F1E1E" uuid="164d926d-eb21-4698-a50d-15665c4217d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da011df3-b25e-410e-b0c5-20b6868a5778"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombrecomida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="-1" width="100" height="30" forecolor="#1F1E1E" uuid="a5dea9f9-2b8b-4da8-8749-13d2933cadca">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2979f70c-2180-40f9-a681-bf8b1d5d7f57"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="570" y="20" width="210" height="18" forecolor="#1F1E1E" uuid="4f5b1bb7-f379-4a42-be1a-1e0cfd70b6a2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+"/"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
