@@ -3,10 +3,12 @@ name: Java CI with Maven
 on:
   push:
     branches:
-      - 'backend'   # Solo se activa en la rama 'backend'
+      - main
+      - Test-GitHubActions
+      - develop
+      - backend
   pull_request:
-    branches:
-      - 'backend'   # Solo se activa en la rama 'backend'
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
