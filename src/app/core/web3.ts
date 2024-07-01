@@ -16,18 +16,18 @@ export class Web3Service {
     if (typeof window.ethereum !== 'undefined') {
       this.web3 = new Web3(window.ethereum);
       window.ethereum.enable().catch((error: any) => {
-        console.error('User denied account access', error);
+        console.error('Acceso denegado por el usuario', error);
       });
     } else if (typeof window.web3 !== 'undefined') {
       this.web3 = new Web3(window.web3.currentProvider);
     } else {
-      console.warn('MetaMask is not installed.');
+      console.warn('MetaMask no está instalado.');
     }
   }
 
   public async connectAccount(): Promise<Web3 | null> {
     if (!this.web3) {
-      console.error('Web3 provider is not initialized.');
+      console.error('Proveedor Web3 no inicializado.');
       return null;
     }
 
@@ -37,7 +37,7 @@ export class Web3Service {
       this.accountsObservable.next(this.account);
       return this.web3;
     } catch (error) {
-      console.error('User denied account access', error);
+      console.error('Acceso denegado por el usuario', error);
       return null;
     }
   }
@@ -60,21 +60,21 @@ export class Web3Service {
 
   public getContract(abi: any, address: string): any {
     if (!this.web3) {
-      throw new Error('Web3 provider is not initialized.');
+      throw new Error('Proveedor Web3 no inicializado.');
     }
     return new this.web3.eth.Contract(abi, address);
   }
 
   public async callContractMethod(contract: any, methodName: string, ...args: any[]): Promise<any> {
     if (!this.account) {
-      throw new Error('Account not connected');
+      throw new Error('Cuenta no conectada.');
     }
     return contract.methods[methodName](...args).call({ from: this.account });
   }
 
   public async sendContractMethod(contract: any, methodName: string, ...args: any[]): Promise<any> {
     if (!this.account) {
-      throw new Error('Account not connected');
+      throw new Error('Cuenta no conectada.');
     }
     return contract.methods[methodName](...args).send({ from: this.account });
   }

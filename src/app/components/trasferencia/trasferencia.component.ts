@@ -2,20 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import AccountWeb3Model from '../../model/account.web3.model';
 import { Web3Service } from '../../core/web3';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trasferencia',
   templateUrl: './trasferencia.component.html',
-  styleUrls: ['./trasferencia.component.css']
+  styleUrl: './trasferencia.component.css'
 })
 export class TrasferenciaComponent implements OnInit {
   account: AccountWeb3Model = new AccountWeb3Model();
   private web3js: any;
   recipientAddress: string = '';
   amount: number = 0;
-  transactionMessage: string | null = null;
-  transactionSuccess: boolean = false;
 
   constructor(
     private web3Service: Web3Service,
@@ -53,22 +50,18 @@ export class TrasferenciaComponent implements OnInit {
   }
 
   async sendTransaction() {
-    this.transactionMessage = null;
     if (!this.web3js) {
-      this.transactionMessage = 'Web3 provider is not initialized.';
-      this.transactionSuccess = false;
+      console.error('Web3 provider is not initialized.');
       return;
     }
 
     if (!this.recipientAddress) {
-      this.transactionMessage = 'Recipient address is not specified.';
-      this.transactionSuccess = false;
+      console.error('Recipient address is not specified.');
       return;
     }
 
     if (this.amount <= 0) {
-      this.transactionMessage = 'Amount should be greater than zero.';
-      this.transactionSuccess = false;
+      console.error('Amount should be greater than zero.');
       return;
     }
 
@@ -83,25 +76,10 @@ export class TrasferenciaComponent implements OnInit {
         value: value
       });
 
-      this.transactionMessage = `Transacción completada! Enviado ${this.amount} ETH a ${this.recipientAddress}`;
-      this.transactionSuccess = true;
-      this.updateAccountInfo(); 
-
-      Swal.fire({
-        position: "center", 
-        icon: "success",
-        title: "Su Transacción se ha completado con exito!",
-        showConfirmButton: false,
-        timer: 5500
-      });
-      
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        this.transactionMessage = 'Transaction failed: ' + error.message;
-      } else {
-        this.transactionMessage = 'Transaction failed: Unknown error';
-      }
-      this.transactionSuccess = false;
+      console.log(`Transaction successful! Sent ${this.amount} ETH to ${this.recipientAddress}`);
+      this.updateAccountInfo(); // Refresh account info after transaction
+    } catch (error) {
+      console.error('Transaction failed:', error);
     }
   }
 
@@ -109,8 +87,9 @@ export class TrasferenciaComponent implements OnInit {
     this.router.navigate(['/send-remittance']).then();
   }
 
+  // New function to handle Salir de la web3 functionality
   logoutWeb3() {
-    this.web3js = null; 
-    this.account = new AccountWeb3Model();
+    this.web3js = null; // Disconnect from Web3 provider
+    this.account = new AccountWeb3Model(); // Reset account information
   }
 }
